@@ -1,0 +1,29 @@
+{
+    "name": "ione/fmw",
+    "description": "development tools to build some web application",
+    "type": "metapackage",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "iwan firmawan",
+            "email": "firmawaneiwan@gmail.com"
+        }
+    ],
+    "require": {
+        "rcastera/session": "v1.0.0",
+        "plasticbrain/php-flash-messages": "^1.0",
+        "catfan/Medoo": "^1.4",
+        "setasign/fpdf": "^1.8",
+        "datatables/datatables": "^1.10",
+        "vlucas/valitron": "^1.4"
+    },
+     "config": {
+        "vendor-dir": "plugins"
+    },
+    "autoload": {
+    "psr-4": {
+      "Fmw\\":"system/",
+      "Act\\":"actions/"
+    }
+  }
+}
