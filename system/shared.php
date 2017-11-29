@@ -15,8 +15,8 @@ function site_url($load=''){
     $protocol = strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,5))=='https://'?'https://':'http://';
     // return: http://localhost/myproject/
     $explode  = explode('/', $pathInfo['dirname']);
-
-    return $protocol.$hostName.'/'.$explode[1]."/".$load;
+    return $protocol.$hostName.'/'.$load;
+    //return $protocol.$hostName.'/'.$explode[1]."/".$load;
     //return $protocol.$hostName.$pathInfo['dirname']."/";
     
 }
@@ -81,6 +81,7 @@ function callHook(){
 	
 	if (!in_array($page, $public_dir)) {
 		$controllername = ucwords($page);
+
 		if (class_exists($controllername)) {
 			$dispatch 		= new $controllername($action);
 			if ((int)method_exists($controllername, $action)) {		
@@ -88,6 +89,9 @@ function callHook(){
 			}else{
 				/* error generation code */
 			}		
+		}else{
+			$notfound = new Controller();
+			$notfound->show_page('404');
 		}
 	}
 	
